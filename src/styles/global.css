@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+  background: #e5e7eb;
+}
+
+/* HEADER & FOOTER */
+.header {
+  height: 64px;
+  background: #0f2a44;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.footer {
+  height: 40px;
+  background: #163a5f;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  font-size: 12px;
+}
+
+.main {
+  padding: 80px 16px 56px;
+}
+
+/* DASHBOARD GRID */
+.dashboard {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+}
+
+/* PANEL */
+.panel {
+  background: white;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+}
+
+/* .wave-fill {
+  position: absolute;
+  bottom: 0;
+  left: -50%;
+  width: 200%;
+  height: 100%;
+  border-radius: 40%;
+  animation: waveMove 6s linear infinite;
+}
+
+.wave-fill::before {
+  content: '';
+  position: absolute;
+  top: -15%;
+  left: 0;
+  width: 200%;
+  height: 120%;
+  background: inherit;
+  border-radius: 45%;
+  opacity: 0.8;
+  animation: waveMoveReverse 10s linear infinite;
+}
+
+@keyframes waveMove {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(50%);
+  }
+}
+
+@keyframes waveMoveReverse {
+  0% {
+    transform: translateX(50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+} */
+
+
+@keyframes wave {
+  0% {
+    clip-path: polygon(0 0%, 10% 10%, 20% 20%, 30% 10%, 40% 20%, 50% 10%, 60% 20%, 70% 10%, 80% 20%, 90% 10%, 100% 0%, 100% 100%, 0 100%);
+  }
+  50% {
+    clip-path: polygon(0 0%, 10% 20%, 20% 10%, 30% 20%, 40% 10%, 50% 20%, 60% 10%, 70% 20%, 80% 10%, 90% 20%, 100% 0%, 100% 100%, 0 100%);
+  }
+  100% {
+    clip-path: polygon(0 0%, 10% 10%, 20% 20%, 30% 10%, 40% 20%, 50% 10%, 60% 20%, 70% 10%, 80% 20%, 90% 10%, 100% 0%, 100% 100%, 0 100%);
+  }
+}
+
+.wave-animation {
+  animation: wave 2s ease-in-out infinite;
+  position: absolute; /* Ensure it stays in place */
+  bottom: 0; /* Align to the bottom */
+  left: 0;
+  right: 0;
+}
+
+/* .cPSBrt {
+    color: black;
+} */
+
+.cPSBrt option {
+    color: inherit
+}
+
+.kzpIv {
+    border-radius: initial !important;
+    border-top-left-radius: inherit !important; 
+    border-top-right-radius: inherit !important;
+}
+
+.kzfmBU {
+  border-radius: 2px !important;
+}
+
+.cDHLQi {
+    border-bottom-left-radius: inherit !important; 
+    border-bottom-right-radius: inherit !important;
+}
