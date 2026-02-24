@@ -133,13 +133,13 @@ export default function Tank({ tank, setDataTankDetail, setOpenModalTankDetail }
     return (
         <>
             <div className="w-full h-auto bg-white rounded-md shadow-md border-2 border-black text-black" >
-                <div className="flex items-center justify-between p-2 bg-black">
+                <div className="flex items-center justify-between p-2 bg-dark">
                     {tank?.Alarms?.length > 0 && ( 
                     <Popover className="relative flex items-center">
                     {({ open }) => (
                         <>
                         {/* BUTTON */}
-                        <Popover.Button className="focus:outline-none p-0 bg-black border-none">
+                        <Popover.Button className="focus:outline-none p-0 bg-dark border-none">
                             <LuTriangleAlert className={getAlarmClass(tank)} />
                         </Popover.Button>
 
@@ -185,7 +185,7 @@ export default function Tank({ tank, setDataTankDetail, setOpenModalTankDetail }
                     {({ open }) => (
                         <>
                         {/* BUTTON */}
-                        <Popover.Button className="focus:outline-none p-0 bg-black border-none" ref={refs.setReference}>
+                        <Popover.Button className="focus:outline-none p-0 bg-dark border-none" ref={refs.setReference}>
                             <p className="text-2xl font-semibold cursor-pointer">
                                 {tank?.isDelivery ? <FaTruck className="text-green-500 hover:text-green-600" /> : <FaTruck className="text-red-500 hover:text-red-600" />}
                             </p>

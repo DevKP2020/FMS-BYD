@@ -9,14 +9,15 @@ import Report from "./Report";
 
 import ModalTankDetail from '../modal/TankDetail'
 import ModalDelivery from '../modal/Delivery'
-
+import PumpControl from '../modal/PumpControl'
 
 export default function Dashboard({ pumps, tanks, indicators }) {
   
   const [ openModalTankDetail, setOpenModalTankDetail ] = useState(false),
         [ openModalDelivery, setOpenModalDelivery ] = useState(false),
-        [ dataTankDetail, setDataTankDetail] = useState(null),
-        [ dataDelivery, setDataDelivery] = useState(null)
+        [ openModalPumpControl, setOpenModalPumpControl ] = useState(false),
+        [ dataTankDetail, setDataTankDetail ] = useState(null),
+        [ dataDelivery, setDataDelivery ] = useState(null)
 
   const TOTAL_PUMPS = pumps?.length || 6;
   const TOTAL_TANKS = tanks?.length || 2;
@@ -61,7 +62,7 @@ export default function Dashboard({ pumps, tanks, indicators }) {
           <div id="pump" className='p-3 bg-white border-1 border-gray-400 rounded-xl shadow-lg'>
             <div id="pumps" className="grid grid-cols-6 gap-3 h-full">
               {pumpsWithFallback?.map((pump, index) => (
-                <Pump key={pump?.ids} num={index + 1} pump={pump} />
+                <Pump key={pump?.ids} num={index + 1} pump={pump} setOpenModalPumpControl={setOpenModalPumpControl} />
               ))}
             </div>
           </div>
@@ -91,12 +92,10 @@ export default function Dashboard({ pumps, tanks, indicators }) {
           <div className="flex items-center justify-center text-lg">
             <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
               <div className="p-2">
-                <div className="grid gap-2">
-                  <div className="grid grid-cols-4 gap-2">
-                    {indicatorsWithFallback?.map(indicator => (
-                      <Indicator key={indicator?.id} indicator={indicator} />
-                    ))}
-                  </div>
+                <div className="grid grid-cols-4 gap-2">
+                  {indicatorsWithFallback?.map(indicator => (
+                    <Indicator key={indicator?.id} indicator={indicator} />
+                  ))}
                 </div>
               </div>
             </div>
@@ -120,7 +119,7 @@ export default function Dashboard({ pumps, tanks, indicators }) {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black opacity-50" />
+            <div className="fixed inset-0 bg-dark opacity-50" />
           </Transition.Child>
 
           <Transition.Child
@@ -157,7 +156,7 @@ export default function Dashboard({ pumps, tanks, indicators }) {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black opacity-50" />
+            <div className="fixed inset-0 bg-dark opacity-50" />
           </Transition.Child>
 
           <Transition.Child
@@ -181,6 +180,40 @@ export default function Dashboard({ pumps, tanks, indicators }) {
         </Dialog>
       </Transition>
 
+      <Transition show={openModalPumpControl} as={Fragment}>
+        <Dialog as="div" className="relative z-50" onClose={setOpenModalPumpControl}>
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-dark opacity-50" />
+          </Transition.Child>
+
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0 scale-95 translate-y-4"
+            enterTo="opacity-100 scale-100 translate-y-0"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100 scale-100 translate-y-0"
+            leaveTo="opacity-0 scale-95 translate-y-4"
+          >
+            <div className="fixed inset-0 flex items-center justify-center">
+              <div className="bg-white rounded-xl p-6">
+                <PumpControl
+                  // tank={dataDelivery}
+                  setOpenModalPumpControl={setOpenModalPumpControl}
+                />
+              </div>
+            </div>
+          </Transition.Child>
+        </Dialog>
+      </Transition>
 
     </>  
   );

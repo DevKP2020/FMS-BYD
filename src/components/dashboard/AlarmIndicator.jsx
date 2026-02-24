@@ -16,7 +16,7 @@ export default function AlarmIndicator({ label, value}) {
 
       {/* Text */}
       <div className="text-xs mt-1 font-bold text-white">
-        <button className="bg-black">{value ? "ON" : "OFF"}</button>
+        <button className="bg-dark">{value ? "ON" : "OFF"}</button>
       </div>
 
     </div>

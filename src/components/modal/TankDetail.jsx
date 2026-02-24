@@ -43,8 +43,8 @@ export default function TankDetail({ tank, setDataDelivery, setOpenModalDelivery
     function getTankStatus(alarms = []) {
         if (!alarms || alarms.length == 0) {
             return {
-                text: 'Status Normal',
-                color: 'green'
+                text: 'Status Offline',
+                color: 'grey'
             }
         }
 
@@ -63,7 +63,7 @@ export default function TankDetail({ tank, setDataDelivery, setOpenModalDelivery
         }
 
         return {
-            text: 'Status Offline',
+            text: 'Status Normal',
             color: 'green'
         }
     }
@@ -73,7 +73,7 @@ export default function TankDetail({ tank, setDataDelivery, setOpenModalDelivery
         <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative p-4 w-full max-w-6xl h-full md:h-auto" style={{ maxHeight: "90vh" }}>
                 <div className="border-0 rounded-xl shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                    <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t-xl bg-black">
+                    <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t-xl bg-dark">
                         <h3 className="text-3xl font-semibold text-white">
                             Tank Details
                         </h3>
@@ -88,7 +88,7 @@ export default function TankDetail({ tank, setDataDelivery, setOpenModalDelivery
                     <div className="flex flex-col md:flex-row w-full h-auto gap-6 p-4 bg-grey rounded-b-xl">
                         <div className="flex flex-col items-center justify-start w-full md:w-1/3 h-auto p-6 gap-20 bg-gray-100 rounded-lg shadow-md">
                             <div className="flex flex-row items-center gap-2 justify-start w-full">
-                                <div className="flex flex-col items-center justify-center w-10 h-24 bg-black rounded-lg p-1 gap-1">
+                                <div className="flex flex-col items-center justify-center w-10 h-24 bg-dark rounded-lg p-1 gap-1">
                                     {/* RED */}
                                     <div className={`w-6 h-6 rounded-full ${
                                         status.color == 'red' ? 'bg-red-500' : 'bg-gray-300'
@@ -137,13 +137,13 @@ export default function TankDetail({ tank, setDataDelivery, setOpenModalDelivery
                             <div className="flex flex-row w-full h-2/3 gap-6">
                             <table className="w-1/2 border-collapse border-2 border-black">
                                 <tbody>
-                                    <tr className="text-white bg-black">
+                                    <tr className="text-white bg-dark">
                                         <td className="px-4 py-2 font-semibold capitalize">Tank Status</td>
                                         <td className="px-4 py-2 text-right"></td>
                                     </tr>
                                     <tr className="bg-white border-b-2 border-black">
                                         <td className="px-4 py-2 font-semibold capitalize">Product Vol</td>
-                                        <td className="px-4 py-2 text-right">{tank?.productVolume} Litres</td>
+                                        <td className="px-4 py-2 text-right">{(tank?.productVolume ?? 0).toFixed(2)} Litres</td>
                                     </tr>
                                     <tr className="bg-white border-b-2 border-black">
                                         <td className="px-4 py-2 font-semibold capitalize">Product Level</td>
@@ -151,31 +151,31 @@ export default function TankDetail({ tank, setDataDelivery, setOpenModalDelivery
                                     </tr>
                                     <tr className="bg-white border-b-2 border-black">
                                         <td className="px-4 py-2 font-semibold capitalize">Ullage</td>
-                                        <td className="px-4 py-2 text-right">{tank?.productUllage} Litres</td>
+                                        <td className="px-4 py-2 text-right">{(tank?.productUllage ?? 0).toFixed(2)} Litres</td>
                                     </tr>
                                     <tr className="bg-white border-b-2 border-black">
                                         <td className="px-4 py-2 font-semibold capitalize">Capacity</td>
-                                        <td className="px-4 py-2 text-right">{tank?.capacity} Litres</td>
+                                        <td className="px-4 py-2 text-right">{(tank?.capacity ?? 0).toFixed(2)} Litres</td>
                                     </tr>
                                 </tbody>
                             </table>
                             <table className="w-1/2 border-collapse border-2 border-black">
                                 <tbody>
-                                    <tr className="px-4 py-2 font-semibold capitalize text-white bg-black">
+                                    <tr className="px-4 py-2 font-semibold capitalize text-white bg-dark">
                                         <td className="px-4 py-3 w-full font-semibold capitalize">Tank Information</td>
                                         <td className="px-4 py-3"></td>
                                     </tr>
                                     <tr className="bg-white border-b-2 border-black">
                                         <td className="px-4 py-2 font-semibold capitalize">Tank No</td>
-                                        <td className="px-4 py-2 text-right">{tank?.probeNumber}</td>
+                                        <td className="px-4 py-2 text-right">{tank?.probeNumber ?? '0'}</td>
                                     </tr>
                                     <tr className="bg-white border-b-2 border-black">
                                         <td className="px-4 py-2 font-semibold capitalize">Tank Name</td>
-                                        <td className="px-4 py-2 text-right">{tank?.tankName}</td>
+                                        <td className="px-4 py-2 text-right">{tank?.tankName ?? 'Undefined'}</td>
                                     </tr>
                                     <tr className="bg-white border-b-2 border-black">
                                         <td className="px-4 py-2 font-semibold capitalize">Product</td>
-                                        <td className="px-4 py-2 text-right">{tank?.productName}</td>
+                                        <td className="px-4 py-2 text-right">{tank?.productName ?? 'Unknown'}</td>
                                     </tr>
                                     <tr className="bg-white border-b-2 border-black">
                                         <td className="px-4 py-2 font-semibold capitalize">Last Update</td>
@@ -187,29 +187,29 @@ export default function TankDetail({ tank, setDataDelivery, setOpenModalDelivery
                             <div className="flex flex-row w-full h-1/3 gap-6">
                                 <table className="w-1/2 border-collapse border-2 border-black">
                                     <tbody>
-                                        <tr className="text-white bg-black">
+                                        <tr className="text-white bg-dark">
                                             <td className="px-4 py-2 font-semibold capitalize">Water</td>
                                             <td className="px-4 py-2"></td>
                                         </tr>
                                         <tr className="bg-white border-b-2 border-black">
                                             <td className="px-4 py-2 font-semibold capitalize">Water Vol</td>
-                                            <td className="px-4 py-2 text-right">{tank?.waterVolume} Litres</td>
+                                            <td className="px-4 py-2 text-right">{(tank?.waterVolume ?? 0).toFixed(2)} Litres</td>
                                         </tr>
                                         <tr className="bg-white border-b-2 border-black">
                                             <td className="px-4 py-2 font-semibold capitalize">Water Level</td>
-                                            <td className="px-4 py-2 text-right">{tank?.waterHeight} mm</td>
+                                            <td className="px-4 py-2 text-right">{tank?.waterHeight ?? 0} mm</td>
                                         </tr>
                                     </tbody>
                                 </table>
                                 <table className="w-1/2 border-collapse border-2 border-black">
                                     <tbody>
-                                        <tr className="text-white bg-black">
+                                        <tr className="text-white bg-dark">
                                             <td className="px-4 py-2 font-semibold capitalize">Temperature</td>
                                             <td className="px-4 py-2"></td>
                                         </tr>
                                         <tr className="bg-white border-b-2 border-black">
                                             <td className="px-4 py-2 font-semibold capitalize">Current</td>
-                                            <td className="px-4 py-2 text-right">{tank?.temperature}°C</td>
+                                            <td className="px-4 py-2 text-right">{(tank?.temperature ?? 0).toFixed(1)}°C</td>
                                         </tr>
                                     </tbody>
                                 </table>

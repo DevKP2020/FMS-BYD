@@ -10,7 +10,11 @@ import PumpDelivePaused from '../../assets/images/pumps/nozzle-pertamax-turbo-de
 import PumpUndefinedError from '../../assets/images/pumps/nozzle-pertamax-turbo-undefinederror.png';
 import PumpLocked from '../../assets/images/pumps/nozzle-pertamax-turbo-blocked.png';
 
-export default function Pump({ width = 86, height = 86, num, pump }) {
+export default function Pump({ width = 86, height = 86, num, pump, setOpenModalPumpControl }) {
+
+    const handlePumpControl = () => {
+        setOpenModalPumpControl(true)
+    }
 
     // function cardColor(pump) {
     //     const validState = !["LOCKED", "IDLE", "ERROR", "NOT-ALLOWED"].includes(pump.state);
@@ -72,9 +76,9 @@ export default function Pump({ width = 86, height = 86, num, pump }) {
 
     return (
         <>
-        <div className={'px-4 py-4 bg-white hover:bg-slate-200 cursor-pointer border-2 border-black rounded-xl shadow-lg h-auto'}>
+        <div className={'px-4 py-4 bg-white hover:bg-slate-200 cursor-pointer border-2 border-black rounded-xl shadow-lg h-auto'} onClick={() => handlePumpControl()}>
             <div className="w-auto mb-2">
-                <p className="p-1 md:text-xl sm:text-sm rounded-lg border-2 border-gray-500 bg-black text-white">
+                <p className="p-1 md:text-xl sm:text-sm rounded-lg border-2 border-gray-500 bg-dark text-white">
                     <span className='ml-2 mr-5'> {num ?? '0'} </span>
                     <span className='mr-2'>Pump {pump?.ids ?? 'Undefined'} </span>
                 </p>
@@ -92,8 +96,8 @@ export default function Pump({ width = 86, height = 86, num, pump }) {
                     <p className='text-4xl font-bold animate-none absolute top-1/2 left-1/2 -translate-x-1/2'> {parseFloat(pump?.volumes).toFixed(2)} </p>
                 : ''}
             </div>
-            <div className="rounded-lg border-2 border-gray-500 bg-black text-white">
-                <div className="text-xl bg-black text-white text-center border-1 rounded-lg shadow-lg">
+            <div className="rounded-lg border-2 border-gray-500 bg-dark text-white">
+                <div className="text-xl bg-dark text-white text-center border-1 rounded-lg shadow-lg">
                     <p className="hover:text-orange-500">
                         {(pump?.lastTotalVolumes ?? 0).toFixed(2)}
                     </p>

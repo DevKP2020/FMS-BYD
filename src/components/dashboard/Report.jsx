@@ -5,6 +5,7 @@ import DataTable from 'react-data-table-component'
 import CustomLoader from '../materials/CustomLoader'
 import useSWR from 'swr'
 import Fetcher from '../../libs/Fetcher'
+import { PiMicrosoftExcelLogoFill } from "react-icons/pi";
 
 export default function Report() {
 
@@ -149,7 +150,7 @@ export default function Report() {
                     />
                 </form>
                 <div className="flex justify-end mb-2">
-                    <button onClick={handleExport} className="p-2 text-sm text-black bg-yellow-500 font-semibold hover:bg-green-500 hover:text-white rounded-lg border-1 shadow-lg">Export Excel</button>
+                    <button onClick={handleExport} className="flex p-2 text-sm text-white bg-green-500 font-semibold hover:bg-green-600 hover:text-dark rounded-lg border-1 shadow-lg"><PiMicrosoftExcelLogoFill className="mr-1 h-5 w-5" aria-hidden="true"/> Export</button>
                 </div>
             </div>
             <DataTable

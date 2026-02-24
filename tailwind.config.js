@@ -15,7 +15,8 @@ export default {
 				
 			},
 			colors: {
-				'black': '#2C2E3E',
+				// 'dark': '#262838',
+				'dark': '#2C2E3E',
 				'white': '#FFFFFF',
 				'navy': '#0f2a44',
 				'grey': '#e5e7eb'

@@ -13,13 +13,13 @@ export default function Indicator({ indicator }) {
             <div className={`w-8 h-8 rounded-full border-2 ${indicator?.state ? "bg-green-400 animate-blink" : "bg-red-400"}`} />
 
             {/* Text */}
-            <div className="px-4 py-2 mt-1 text-xs bg-black text-white text-center font-bold rounded-lg shadow-lg">
+            <div className="px-4 py-2 mt-1 text-xs bg-dark text-white text-center font-bold rounded-lg shadow-lg">
                 <p className="hover:text-orange-500">
                     {indicator?.state ? "ON" : "OFF"}
                 </p>
             </div>
             {/* <div className="text-xs mt-1 font-bold text-white">
-                <button className="bg-black">{indicator?.state ? "ON" : "OFF"}</button>
+                <button className="bg-dark">{indicator?.state ? "ON" : "OFF"}</button>
             </div> */}
 
         </div>
